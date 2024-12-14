@@ -9,10 +9,13 @@ class Expense extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'amount', 'date', 'description'];
+    protected $fillable = ['title', 'amount', 'date', 'description', 'category_id'];
 
-    public function categories()
+    /**
+     * Get the category associated with the expense.
+     */
+    public function category()
     {
-        return $this->morphToMany(Category::class, 'categorizable', 'categorizables');
+        return $this->belongsTo(Category::class);
     }
 }

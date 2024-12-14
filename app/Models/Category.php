@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-
     use HasFactory;
 
     protected $fillable = ['name', 'category_type'];
 
+    /**
+     * Get all expenses associated with the category.
+     */
     public function expenses()
     {
-        return $this->morphedByMany(Expense::class, 'categorizable');
+        return $this->hasMany(Expense::class);
     }
 }
