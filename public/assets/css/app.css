@@ -1405,6 +1405,11 @@ footer {
     height: 1rem
 }
 
+#showTotalExpenses{
+    box-shadow: 0 5px 15px rgba(36, 104, 146, 0.493);
+    border-radius: 8px;
+}
+
 #auth {
     background: #F8F8F8;
     min-height: 100vh;
