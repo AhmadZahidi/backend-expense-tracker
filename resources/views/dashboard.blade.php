@@ -80,6 +80,7 @@
                     <th>Date</th>
                     <th>Description</th>
                     <th>Category</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -90,6 +91,15 @@
                         <td>{{ $expense->date }}</td>
                         <td>{{ $expense->description }}</td>
                         <td>{{ $expense->category->name }}</td>
+                        <td>
+                            <button type="submit" class="btn btn-warning">Edit</button>
+                            <form action="{{route('expenses.delete',['expense'=>$expense->id])}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

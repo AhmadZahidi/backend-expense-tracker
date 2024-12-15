@@ -43,4 +43,9 @@ class ExpenseController extends Controller
         return redirect()->route('dashboard')->with('success', 'Expense added successfully!');
     }
 
+    public function delete(Expense $expense){
+        $expense->delete();
+        return redirect()->route('dashboard')->with('success', 'Expense deleted successfully!');
+    }
+
 }
