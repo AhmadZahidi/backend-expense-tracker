@@ -25,20 +25,22 @@ class ExpenseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:100',
-            'amount' => 'required|numeric',
-            'date' => 'required|date',
-            'category' => 'required|string|max:100',
+            'title'       => 'required|string|max:100',
+            'amount'      => 'required|numeric',
+            'date'        => 'required|date',
+            'description' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         Expense::create([
-            'user_id' => Auth::id(),
-            'title' => $request->title,
-            'amount' => $request->amount,
-            'date' => $request->date,
-            'category' => $request->category,
+            'title'       => $request->title,
+            'amount'      => $request->amount,
+            'date'        => $request->date,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Expense added successfully!');
     }
+
 }

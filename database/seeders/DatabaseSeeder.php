@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
     {
         // Seed categories
         $categories = [
-            ['id' => 11, 'category_type' => 'expense', 'name' => 'gadget purchase'],
-            ['id' => 12, 'category_type' => 'expense', 'name' => 'house rental'],
-            ['id' => 14, 'category_type' => 'expense', 'name' => 'tuition fee'],
+            ['id' => 12, 'name' => 'house rental'],
+            ['id' => 11, 'name' => 'gadget purchase'],
+            ['id' => 14, 'name' => 'tuition fee'],
         ];
 
         foreach ($categories as $category) {

@@ -7,30 +7,40 @@
     <h1 class="mb-4">Expenses Dashboard</h1>
 
     <!-- Form to Add Expenses -->
-    <form action="{{ route('expenses.store') }}" method="POST" class="mb-4">
+    <form action="{{ route('expenses.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" name="title" required>
         </div>
+
         <div class="mb-3">
             <label for="amount" class="form-label">Amount</label>
-            <input type="number" class="form-control" id="amount" name="amount" required>
+            <input type="number" step="0.01" class="form-control" id="amount" name="amount" required>
         </div>
+
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
             <input type="date" class="form-control" id="date" name="date" required>
         </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description"></textarea>
+        </div>
+
         <div class="mb-3">
             <label for="category_id" class="form-label">Category</label>
-            <select class="form-select" id="category_id" name="category_id" required>
+            <select class="form-control" id="category_id" name="category_id" required>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
+
         <button type="submit" class="btn btn-primary">Add Expense</button>
     </form>
+
 
     <!-- List of Expenses -->
     <h2>Recent Expenses</h2>
@@ -40,6 +50,7 @@
                 <th>Title</th>
                 <th>Amount</th>
                 <th>Date</th>
+                <th>Description</th>
                 <th>Category</th>
             </tr>
         </thead>
@@ -49,6 +60,7 @@
                     <td>{{ $expense->title }}</td>
                     <td>${{ number_format($expense->amount, 2) }}</td>
                     <td>{{ $expense->date }}</td>
+                    <td>{{$expense->description}}</td>
                     <td>{{ $expense->category->name }}</td>
                 </tr>
             @endforeach

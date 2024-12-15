@@ -9,7 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'category_type'];
+    protected $fillable = ['name'];
+
 
     /**
      * Get all expenses associated with the category.

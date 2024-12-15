@@ -11,11 +11,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [ExpenseController::class, 'dashboard'])->name('dashboard');
-    Route::get('/category',[CategoryController::class,'index'])->name('category');
     Route::post('/expenses', [ExpenseController::class, 'store'])->name('expenses.store');
+
+    Route::get('/category',[CategoryController::class,'index'])->name('category');
+    Route::post('/category',[CategoryController::class,'store'])->name('category.store');
+
 });
+
