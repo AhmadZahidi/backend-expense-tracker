@@ -34,6 +34,7 @@
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
                         <td>
+                            <a href="{{ route('categories.edit', ['category' => $category->id]) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('category.delete', ['category' => $category->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')

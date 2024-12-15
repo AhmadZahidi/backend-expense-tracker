@@ -47,5 +47,30 @@ class ExpenseController extends Controller
         $expense->delete();
         return redirect()->route('dashboard')->with('success', 'Expense deleted successfully!');
     }
+    public function edit(Expense $expense) {
+        $categories = Category::all();
+        return view('expensesEdit', compact('expense', 'categories'));
+    }
+
+    public function update(Request $request, Expense $expense) {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'amount' => 'required|numeric|min:0',
+            'date' => 'required|date',
+            'description' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $expense->update([
+            'title' => $request->title,
+            'amount' => $request->amount,
+            'date' => $request->date,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+        ]);
+
+        return redirect()->route('dashboard')->with('success', 'Expense updated successfully!');
+    }
+
 
 }

@@ -92,7 +92,8 @@
                         <td>{{ $expense->description }}</td>
                         <td>{{ $expense->category->name }}</td>
                         <td>
-                            <button type="submit" class="btn btn-warning">Edit</button>
+                            <a href="{{ route('expenses.edit', ['expense' => $expense->id]) }}" class="btn btn-warning">Edit</a>
+
                             <form action="{{route('expenses.delete',['expense'=>$expense->id])}}" method="POST">
                                 @csrf
                                 @method('DELETE')
