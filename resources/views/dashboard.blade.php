@@ -111,5 +111,7 @@
     </tbody>
 </table>
 
+{{$expenses->links()}}
+
     </div>
 @endsection

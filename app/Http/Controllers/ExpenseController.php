@@ -20,7 +20,7 @@ class ExpenseController extends Controller
         // If a category ID is selected, filter expenses by category
         $expenses = Expense::when($request->category_id, function($query) use ($request) {
             return $query->where('category_id', $request->category_id);
-        })->get();
+        })->paginate(5);
 
         // Calculate the total sum of expenses, filtered by category
         $sum = $expenses->sum('amount');
